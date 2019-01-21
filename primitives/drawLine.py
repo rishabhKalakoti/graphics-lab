@@ -1,4 +1,5 @@
 from graphics import *
+from viewport import *
 
 def drawLine(x0, y0, x1, y1):
 	win = GraphWin('line', 600, 400)
@@ -23,7 +24,8 @@ def drawLine(x0, y0, x1, y1):
 	y = 0
 
 	for x in range(dx + 1):
-		p= Point(x0 + x*xx + y*yx, y0 + x*xy + y*yy)
+		px,py = viewTransform(x0 + x*xx + y*yx, y0 + x*xy + y*yy)
+		p=Point(px,py)
 		p.draw(win)
 		if D >= 0:
 		    y += 1
@@ -35,6 +37,7 @@ def drawLine(x0, y0, x1, y1):
 
 if __name__ == "__main__":
 	# input
+	print("Device Window (-300, -200, 300, 200)")
 	print("Input Coordinates for point A: (x0, y0)")
 	x0, y0 = input().split()
 	x0 = int(x0)
