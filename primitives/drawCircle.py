@@ -31,7 +31,6 @@ def drawCircle(xc,yc,r):
 		genCircle(xc, yc, x, y)
 
 if __name__ == "__main__":
-	#global win
 	
 	print("Device Window (-300, -200, 300, 200)")
 	print("Input Coordinates for center: (x0, y0)")
