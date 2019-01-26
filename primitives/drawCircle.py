@@ -1,12 +1,9 @@
 from graphics import *
-from viewport import *
+import viewport
 
 def putpixel(x,y):
-	global win
-	x,y = viewTransform(x,y)
-	p=Point(x,y)
-	p.draw(win)
-	
+	viewport.putPoint(Point(x,y))
+
 def genCircle(xc,yc,x,y):
 	putpixel(xc+x, yc+y)
 	putpixel(xc-x, yc+y)
@@ -18,6 +15,7 @@ def genCircle(xc,yc,x,y):
 	putpixel(xc-y, yc-x)
     
 def drawCircle(xc,yc,r):
+	drawLinesInside(xc,yc,r)
 	x=0
 	y=r
 	d = 3-2*r
@@ -29,18 +27,24 @@ def drawCircle(xc,yc,r):
 		else:
 			d = d + 4 * x + 6; 
 		genCircle(xc, yc, x, y)
-
-if __name__ == "__main__":
-	
-	print("Device Window (-300, -200, 300, 200)")
+def drawLinesInside(xc,yc,r):
+	x=0
+	y=0
+	while x*x+y*y<=r*r:
+		genCircle(xc,yc,x,y)
+		x+=1
+		y+=1
+	y=0
+	while y<=r:
+		genCircle(xc,yc,0,y)
+		y+=1
+def drawCircleInterface():
 	print("Input Coordinates for center: (x0, y0)")
 	x, y = input().split()
 	x = int(x)
 	y = int(y)
-	print("Input radius r:)")
+	print("Input radius r:")
 	r = int(input())
-	win = GraphWin('line', 600, 400)
-	win.yUp()
+	viewport.initWindow()
 	drawCircle(x,y,r)
-	win.getMouse()
-	win.close()
+	viewport.closeWin()

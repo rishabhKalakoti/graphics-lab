@@ -1,10 +1,7 @@
 from graphics import *
-from viewport import *
+import viewport
 
 def drawLine(x0, y0, x1, y1):
-	win = GraphWin('line', 600, 400)
-	win.yUp()
-	
 	dx = x1 - x0
 	dy = y1 - y0
 
@@ -24,20 +21,15 @@ def drawLine(x0, y0, x1, y1):
 	y = 0
 
 	for x in range(dx + 1):
-		px,py = viewTransform(x0 + x*xx + y*yx, y0 + x*xy + y*yy)
-		p=Point(px,py)
-		p.draw(win)
+		p = Point(x0 + x*xx + y*yx, y0 + x*xy + y*yy)
+		viewport.putPoint(p)
 		if D >= 0:
 		    y += 1
 		    D -= 2*dx
 		D += 2*dy
-	
-	win.getMouse()
-	win.close()
 
-if __name__ == "__main__":
+def drawLineInterface():
 	# input
-	print("Device Window (-300, -200, 300, 200)")
 	print("Input Coordinates for point A: (x0, y0)")
 	x0, y0 = input().split()
 	x0 = int(x0)
@@ -46,5 +38,6 @@ if __name__ == "__main__":
 	x1, y1 = input().split()
 	x1 = int(x1)
 	y1 = int(y1)
-	
+	viewport.initWindow()
 	drawLine(x0,y0,x1,y1)
+	viewport.closeWin()
