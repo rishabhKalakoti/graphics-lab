@@ -33,6 +33,8 @@ if __name__ == "__main__":
 			drawPolygonInterface()
 		elif choice == '5':
 			drawCircleInterface()
+		elif choice == '6':
+			drawEllipseInterface()
 		else:
 			print("Invalid Choice.")
 		print("")
