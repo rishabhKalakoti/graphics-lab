@@ -12,7 +12,7 @@ def drawPolygonInterface():
 		l.append([int(x),int(y)])
 		n-=1
 	viewport.initWindow()
-	print(l)
+	# print(l)
 	n = len(l)
 	for i in range(n):
 		drawLine(l[i%n][0],l[i%n][1],l[(i+1)%n][0],l[(i+1)%n][1])

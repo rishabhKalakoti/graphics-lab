@@ -28,7 +28,7 @@ if __name__ == "__main__":
 		elif choice == '2':
 			changeDeviceCoords()
 		elif choice == '3':
-			drawLine()
+			drawLineInterface()
 		elif choice == '4':
 			drawPolygonInterface()
 		elif choice == '5':
