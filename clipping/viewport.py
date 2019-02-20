@@ -63,8 +63,8 @@ class Screen:
 		print("Xmin:",self.Xmn,"Ymin:",self.Ymn,"Xmax:",self.Xmx,"Ymax:",self.Ymx)
 # for a 600 X 400 viewport and device with mid point at 0,0
 
-device = Screen(-200, -200, 200, 200)
-vp = Screen(0, 0, 400, 400)
+device = Screen(-300, -300, 300, 300)
+vp = Screen(0, 0, 600, 600)
 
 def changeDeviceCoords():
 	global device

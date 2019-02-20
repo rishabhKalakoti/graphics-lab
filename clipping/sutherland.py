@@ -66,7 +66,7 @@ def clipping(x0,y0,x1,y1):
 			outcode1 = outcode
 			x1 = x
 			y1 = y
-		
+
 def clipInterface():
 	print("Give end points of line (x0,y0,x1,y1)")
 	x0,y0,x1,y1 = input().split()
