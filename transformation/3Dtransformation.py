@@ -1,9 +1,3 @@
-
-# coding: utf-8
-
-# In[4]:
-
-
 import numpy as np
 import math
 import time
@@ -136,10 +130,9 @@ for i in range(n):
     k = (i+1)%n
     ax.plot([polygon[i][0], polygon[k][0]], [polygon[i][1], polygon[k][1]],zs=[polygon[i][2], polygon[k][2]])
 plt.show()
-time.sleep(10)
+input()
+plt.close()
 polygon = rotateAboutAxis(polygon,90,[0,0,0,1,1,1])
-#polygon = rotatex(polygon,180)e
-#polygon = scale(polygon,t)
 print(polygon)
 
 
@@ -151,4 +144,5 @@ for i in range(n):
     k = (i+1)%n
     ax.plot([polygon[i][0][0], polygon[k][0][0]], [polygon[i][0][1], polygon[k][0][1]],zs=[polygon[i][0][2], polygon[k][0][2]])
 plt2.show()
-
+input()
+plt2.close()
