@@ -1,15 +1,6 @@
-#paraller projection (orthogonal) on arbitrary plane
+#cavalier projection
 from graphics import *
-import math
-
-def translate():
-	for i in range(n):
-		vertex1[i][0]=vertex1[i][0]+tx
-		vertex1[i][1]=vertex1[i][1]+ty
-		vertex1[i][2]=vertex1[i][2]+tz
-		vertex2[i][0]=vertex2[i][0]+tx
-		vertex2[i][1]=vertex2[i][1]+ty
-		vertex2[i][2]=vertex2[i][2]+tz
+from math import *
 
 def line(x0,y0,z0,x1,y1,z1,color):
 	ax=x0-(z0*0.3)
@@ -31,7 +22,7 @@ def draw3d(clr):
 		z1=vertex2[i][2]
 		line(x0,y0,z0,x1,y1,z1,clr)
 
-def arbitraryplane():
+def projection():
 	for i in range(n):
 		x0=vertex1[i][0]
 		y0=vertex1[i][1]
@@ -39,12 +30,12 @@ def arbitraryplane():
 		x1=vertex2[i][0]
 		y1=vertex2[i][1]
 		z1=vertex2[i][2]
-		x0=(x0*(d1-a*n1)-y0*a*n2-z0*a*n3+a*d0)/d1
-		y0=(y0*(d1-b*n2)-x0*b*n1-z0*b*n3+b*d0)/d1
-		z0=(z0*(d1-c*n3)-x0*c*n1-y0*c*n2+c*d0)/d1
-		x1=(x1*(d1-a*n1)-y1*a*n2-z1*a*n3+a*d0)/d1
-		y1=(y1*(d1-b*n2)-x1*b*n1-z1*b*n3+b*d0)/d1
-		z1=(z1*(d1-c*n3)-x1*c*n1-y1*c*n2+c*d0)/d1
+		x0=x0+z0*0.5*cos(radians(45))
+		y0=y0+z0*0.5*sin(radians(45))
+		z0=0
+		x1=x1+z1*0.5*cos(radians(45))
+		y1=y1+z1*0.5*sin(radians(45))
+		z1=0
 		vertex1[i]=[x0,y0,z0]
 		vertex2[i]=[x1,y1,z1]
 
@@ -91,26 +82,9 @@ for i in range(n):
 	z=points[5]
 	vertex2.append([x,y,z])
 
-tx=int(input("x translate : "))
-ty=int(input("y translate : "))
-tz=int(input("z translate : "))
-translate()
-
 draw3d(color1)
 
-print("Enter vector normal :")
-n1=int(input())
-n2=int(input())
-n3=int(input())
-a=-n1
-b=-n2
-c=-n3
-print("Enter reference point :")
-R0=input().split()
-d0=int(R0[0])*n1+int(R0[1])*n2+int(R0[2])*n3
-d1=a*n1+b*n2+c*n3
-
-arbitraryplane()
+projection()
 
 draw3d(color2)
 

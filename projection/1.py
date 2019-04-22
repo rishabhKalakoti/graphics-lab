@@ -1,15 +1,6 @@
-#paraller projection (orthogonal) on principle planes
+#parallel projection (orthogonal) on principle planes
 from graphics import *
 import math
-
-def translate():
-	for i in range(n):
-		vertex1[i][0]=vertex1[i][0]+tx
-		vertex1[i][1]=vertex1[i][1]+ty
-		vertex1[i][2]=vertex1[i][2]+tz
-		vertex2[i][0]=vertex2[i][0]+tx
-		vertex2[i][1]=vertex2[i][1]+ty
-		vertex2[i][2]=vertex2[i][2]+tz
 
 def line(x0,y0,z0,x1,y1,z1,color):
 	ax=x0-(z0*0.3)
@@ -73,11 +64,6 @@ for i in range(n):
 	y=points[4]
 	z=points[5]
 	vertex2.append([x,y,z])
-
-tx=int(input("x translate : "))
-ty=int(input("y translate : "))
-tz=int(input("z translate : "))
-translate()
 
 draw3d(vertex1,vertex2,color1)
 
